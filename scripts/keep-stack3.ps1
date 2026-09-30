@@ -109,9 +109,18 @@ function Start-Pg {
 }
 
 function Test-Health {
+    # Returns 'healthy' ONLY when /health reports a healthy database.
+    #
+    # Why not "non-empty response means up": a daemon whose Postgres has died still
+    # answers HTTP 200, with {"status":"unhealthy","database":"error",...}. Treating
+    # that as up means the supervise loop never restarts anything -- observed
+    # 2026-09-30 17:41: daemon 11460 alive, 5433 gone, log said "daemon already
+    # healthy". The daemon happened to reconnect on its own; if it had not, the
+    # supervisor would have sat there doing nothing.
     try {
         $r = Invoke-WebRequest ('http://127.0.0.1:' + $apiPort + '/health') -UseBasicParsing -TimeoutSec 5
-        return $r.Content
+        if ($r.Content -match '"status"\s*:\s*"healthy"') { return 'healthy' }
+        return ''
     } catch { return '' }
 }
 
