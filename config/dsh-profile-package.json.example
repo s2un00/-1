@@ -1,0 +1,28 @@
+{
+  "_comment": "示例：~/.dsh/profiles/<profile>/package.json。插件要能挂载，必须三处同时到位：dependencies + dsh.profile.bundles + cordis.patch.yml 里的 - id: hindsight 行。少任何一处，会话里就看不到 hindsight_* 工具，而且不会有任何报错。",
+  "name": "dsh-profile-desktop",
+  "private": true,
+  "dependencies": {
+    "@linxin666/dsh-pet": "0.4.3",
+    "@linxin666/dsh-web-all": "0.4.3",
+    "@michengai/dsh-im-connect": "0.1.57",
+    "billion-context": "0.1.173",
+    "dsh-whale-widget": "0.3.17",
+    "dshmarket": "1.66.5",
+    "@vectorize-io/hindsight-coding-agents": "0.8.0"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dshmarket",
+        "billion-context",
+        "dsh-whale-widget",
+        "@linxin666/dsh-web-all",
+        "@michengai/dsh-im-connect",
+        "@vectorize-io/hindsight-coding-agents"
+      ]
+    }
+  }
+}

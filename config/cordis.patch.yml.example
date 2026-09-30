@@ -1,0 +1,18 @@
+# 示例：~/.dsh/profiles/<profile>/cordis.patch.yml 的末尾
+#
+# 这是一个 YAML 顶层数组。缩进必须是 2 空格 —— 写成 4 空格会让 dsh 起不来：
+#   DesktopHostFatalError: YAMLException: bad indentation of a mapping entry (90:13)
+# 而且应用解析失败后会“自愈”，把这个文件重置成空模板 []，静默丢掉你所有配置。
+#
+# 改完务必先验证：
+#   node -e "const y=require('<profile>/node_modules/js-yaml');const fs=require('fs');console.log(y.load(fs.readFileSync('<profile>/cordis.patch.yml','utf8')).length)"
+
+- id: ui-chat
+  name: "@deepseek-ai/dsh-client-ui-chat"
+  config:
+    transcriptView: detailed
+
+# … 中间是你原有的配置 …
+
+- id: hindsight
+  disabled: false

@@ -1,0 +1,7 @@
+{
+  "serverMode": "daemon",
+  "apiPort": 9077,
+  "daemonProfile": "coding-agent",
+  "embedVersion": "0.10.2",
+  "autoInject": "reflect"
+}

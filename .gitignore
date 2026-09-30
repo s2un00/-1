@@ -1,0 +1,44 @@
+# 日志与运行产物
+*.log
+*.ndjson
+autostart.log
+keep-stack3.log
+restart-stack.log
+daemon-start.log
+api*.log
+api*.txt
+*.tmp
+
+# 备份快照
+*-backup-*/
+.bom-fix-backup/
+.hsg-backup/
+dsh-plugin-fix-backup-*/
+
+# 数据与缓存（绝不上传）
+pgdata*/
+models/
+uv-cache/
+uv-python/
+uv-tools/
+.pnpm-store/
+flashrank-cache/
+*.onnx
+*.bin
+
+# 依赖
+node_modules/
+pnpm-lock.yaml
+
+# 凭据
+*.env
+!.env.example
+*credentials*
+*.pem
+*.key
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
